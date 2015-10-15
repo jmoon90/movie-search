@@ -6,10 +6,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
     <script src="https://code.angularjs.org/1.4.7/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.4.7/angular-route.min.js"></script>
+    <script src="https://code.angularjs.org/1.4.7/angular-resource.min.js"></script>
     <script src="app.js"></script>
     <script src="main.ctrl.js"></script>
+    <script src="movie_service.js"></script>
 </head>
-<body ng-app='app' ng-controller='MainController as main'>
+<body ng-app='movieApp' ng-controller='MainController as main'>
   <div class="container">
     <h1>{{ main.title }}</h1>
 
@@ -20,6 +23,15 @@
         {{show.title}}
          <span class="badge">{{show.year}}</span></li>
     </ul>
+
+    <h2>A list of MOVIE</h2>
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="movie in main.movieResults | orderBy:main.order.key:main.order.reverse">
+        movie title: {{movie.title}}
+        <span class="badge">{{movie.release_date}}</span></li>
+      </li>
+    </ul>
+
     <select class="form-control pull-right" ng-model='main.order' ng-options='order as order.title for order in main.orders'></select>
 
     <div class="clearfix"></div>

@@ -1,67 +1,50 @@
-angular.module('app').controller('MainController', [function() {
+movieApp.controller('MainController', ['movieService', function(movieService) {
   var vm = this;
   vm.title = 'Movie Search';
   vm.searchInput = '';
 
+  vm.movies = movieService.GetPopularMovies();
+
+  vm.movies.then(function(results) {
+    vm.movieResults = results.data.results;
+  });
+
+
+
   vm.shows = [
          {
-             title: 'Game of Thrones',
-             year: 2011,
-             favorite: true
+             title: 'Game of Thrones', year: 2011, favorite: true
          },
          {
-             title: 'Walking Dead',
-             year: 2010,
-             favorite: false
+             title: 'Walking Dead', year: 2010, favorite: false
          },
          {
-             title: 'Firefly',
-             year: 2002,
-             favorite: true
+             title: 'Firefly', year: 2002, favorite: true
          },
          {
-             title: 'Banshee',
-             year: 2013,
-             favorite: true
+             title: 'Banshee', year: 2013, favorite: true
          },
          {
-             title: 'Greys Anatomy',
-             year: 2005,
-             favorite: false
+             title: 'Greys Anatomy', year: 2005, favorite: false
          }
      ];
 
   vm.orders = [
       {
-          id: 1,
-          title: 'Year Ascending',
-          key: 'year',
-          reverse: false
+          id: 1, title: 'Year Ascending', key: 'release_date', reverse: false
       },
       {
-          id: 2,
-          title: 'Year Descending',
-          key: 'year',
-          reverse: true
+          id: 2, title: 'Year Descending', key: 'release_date', reverse: true
       },
       {
-          id: 3,
-          title: 'Title Ascending',
-          key: 'title',
-          reverse: false
+          id: 3, title: 'Title Ascending', key: 'title', reverse: false
       },
       {
-          id: 4,
-          title: 'Title Descending',
-          key: 'title',
-          reverse: true
-      }
+          id: 4, title: 'Title Descending', key: 'title', reverse: true }
   ];
-  vm.order = vm.orders[0];
 
   vm.new = {};
   vm.addShow = function() {
-    console.log('vm.new -> ',vm.new)
     vm.shows.push(vm.new)
     vm.new = {};
   }
