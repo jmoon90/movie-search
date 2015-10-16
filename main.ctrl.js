@@ -6,8 +6,9 @@ movieApp.controller('MainController', ['movieService', function(movieService) {
   vm.movies = movieService.GetPopularMovies();
 
   vm.movies.then(function(results) {
-    vm.movieResults = results.data.results;
-  });
+    vm.movieResults = results.results;
+  })
+
 
 
 

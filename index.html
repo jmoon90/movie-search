@@ -27,7 +27,7 @@
     <h2>A list of MOVIE</h2>
     <ul class="list-group">
       <li class="list-group-item" ng-repeat="movie in main.movieResults | orderBy:main.order.key:main.order.reverse">
-        movie title: {{movie.title}}
+        {{movie.title}}
         <span class="badge">{{movie.release_date}}</span></li>
       </li>
     </ul>
