@@ -1,0 +1,15 @@
+<div ng-controller='moviesController as movies'>
+  <h1>{{ movies.title }}</h1>
+  <select class="form-control pull-right" ng-model='movies.order' ng-options='o.title for o in movies.orders'></select>
+
+  <hr/>
+  <br/>
+
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="movie in movies.movieResults | orderBy : movies.order.key : movies.order.reverse">
+      {{movie.title}}
+      <span class="badge">{{movie.release_date}}</span></li>
+    </li>
+  </ul>
+</div>
+

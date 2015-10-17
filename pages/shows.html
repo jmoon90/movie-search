@@ -1,0 +1,16 @@
+<div ng-controller='tvShowsController as shows'>
+  <h1>{{ shows.title }}</h1>
+  <select class="form-control pull-right" ng-model='shows.order' ng-options='o.title for o in shows.orders'></select>
+
+  <hr/>
+  <br/>
+
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="show in shows.showsResults | orderBy : shows.order.key : shows.order.reverse">
+      <span class="glyphicon glyphicon-star" ng-if="show.favorite"></span>
+      {{show.name}}
+      <span class="badge">{{show.first_air_date}}</span>
+    </li>
+  </ul>
+</div>
+

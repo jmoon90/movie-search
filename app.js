@@ -1,1 +1,1 @@
-var movieApp = angular.module('movieApp', ['ngRoute', 'ngResource']);
+var popularListApp = angular.module('popularListApp', ['ngRoute', 'ngResource']);
