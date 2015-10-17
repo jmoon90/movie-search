@@ -1,19 +1,38 @@
-popularListApp.controller('MainController', [function() {
+popularListApp.controller('MainController', ['$mdSidenav', '$log', function($mdSidenav, $log) {
   var vm = this;
   vm.title = 'Popular Stuff';
-  vm.searchInput = '';
 
-  vm.new = {};
-  vm.addShow = function() {
-    vm.shows.push(vm.new)
-    vm.new = {};
+  vm.toggleRight = buildToggler('right');
+   vm.isOpenRight = function(){
+     return $mdSidenav('right').isOpen();
+   };
+
+  function buildToggler(navId) {
+    return function() {
+      console.log('we are in the right', navId);
+      $mdSidenav(navId)
+        .toggle()
+        .then(function() {
+          $log.debug("toggle " + navId + " is done");
+        })
+    }
   }
-
 }]);
+
+//sidenav popout
+popularListApp.controller('RightCtrl', function ($timeout, $mdSidenav, $log) {
+  var vm = this;
+  vm.close = function () {
+    $mdSidenav('right').close()
+      .then(function () {
+        $log.debug("close RIGHT is done");
+    });
+  };
+});
 
 popularListApp.controller('moviesController', ['popularInfoService','$routeParams', function(popularInfoService, $routeParams) {
   var vm = this;
-  vm.title = 'Popular Movies'
+  vm.title = 'Movies'
 
   //fetch movies
   vm.movies = popularInfoService.getPopularMovies();
@@ -29,18 +48,13 @@ popularListApp.controller('moviesController', ['popularInfoService','$routeParam
       {
           id: 2, title: 'Newer Movies', key: 'release_date', reverse: true
       }
-      // {
-      //     id: 3, title: 'Title Ascending', key: 'title', reverse: false
-      // },
-      // {
-      //     id: 4, title: 'Title Descending', key: 'title', reverse: true }
   ];
   vm.order =  vm.orders[1];
 }]);
 
 popularListApp.controller('tvShowsController', ['popularInfoService','$routeParams', function(popularInfoService, $routeParams) {
   var vm = this;
-  vm.title = 'Popular Shows'
+  vm.title = 'Shows'
 
   //fetch tv shows
   vm.shows = popularInfoService.getPopularShows();
@@ -55,11 +69,6 @@ popularListApp.controller('tvShowsController', ['popularInfoService','$routePara
       {
           id: 2, title: 'Newer Shows', key: 'first_air_date', reverse: true
       }
-      // {
-      //     id: 3, title: 'Title Ascending', key: 'title', reverse: false
-      // },
-      // {
-      //     id: 4, title: 'Title Descending', key: 'title', reverse: true }
   ];
   vm.order =  vm.orders[1];
 }]);

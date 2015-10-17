@@ -4,8 +4,16 @@
     <meta charset="UTF-8">
     <title>AngularJS Tutorial</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="material_design.css" rel="stylesheet">
 
+    <!-- Angular Material Dependencies -->
     <script src="https://code.angularjs.org/1.4.7/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.4.7/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.4/angular-material.min.js"></script>
+    <script src="https://code.angularjs.org/1.4.7/angular-aria.min.js"></script>
+
+    <!-- Routes -->
     <script src="https://code.angularjs.org/1.4.7/angular-route.min.js"></script>
     <script src="https://code.angularjs.org/1.4.7/angular-resource.min.js"></script>
     <script src="app.js"></script>
@@ -15,18 +23,38 @@
 </head>
 
   <body ng-app='popularListApp'>
-    <header>
+    <header ng-controller='MainController as main'>
+
       <nav class="navbar navbar-default">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="/">AngularJS Popular List</a>
+            <a class="navbar-brand" href="/">Popular List</a>
           </div>
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-            <li><a href="#/movies"><i class="fa fa-home"></i>Movies</a></li>
-            <li><a href="#/shows"><i class="fa fa-home"></i>Shows</a></li>
+            <md-button ng-click='main.toggleRight()' ng-hide='main.isOpenRight()' class='md-primary'>
+              <i class="material-icons md-36">menu</i>
+            </md-button>
           </ul>
+
+
+      <!-- <md&#45;sidenav class="md&#45;sidenav&#45;right md&#45;whiteframe&#45;z2" md&#45;component&#45;id="right"> -->
+      <!--   <md&#45;toolbar class="md&#45;theme&#45;light"> -->
+      <!--     <h1 class="md&#45;toolbar&#45;tools">Sidenav Right</h1> -->
+      <!--   </md&#45;toolbar> -->
+      <!--   <md&#45;content ng&#45;controller="RightCtrl as rightSideNav" layout&#45;padding=""> -->
+      <!--     <ul class="nav navbar&#45;nav navbar&#45;right"> -->
+      <!--       <li><a href="/"><i class="fa fa&#45;home"></i>Home</a></li> -->
+      <!--       <li><a href="#/movies"><i class="fa fa&#45;home"></i>Movies</a></li> -->
+      <!--       <li><a href="#/shows"><i class="fa fa&#45;home"></i>Shows</a></li> -->
+      <!--     </ul> -->
+      <!--     <md&#45;button ng&#45;click="rightSideNav.close()" class="md&#45;primary"> -->
+      <!--       Close Sidenav Right -->
+      <!--     </md&#45;button> -->
+      <!--   </md&#45;content> -->
+      <!-- </md&#45;sidenav> -->
+
+
         </div>
       </nav>
     </header>

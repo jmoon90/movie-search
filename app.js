@@ -1,1 +1,1 @@
-var popularListApp = angular.module('popularListApp', ['ngRoute', 'ngResource']);
+var popularListApp = angular.module('popularListApp', ['ngMaterial', 'ngRoute', 'ngResource']);
