@@ -1,9 +1,17 @@
 .material-icons {
-  line-height: 3;
-
-  font-size: 36px;
+  font-size: 36px !important;
+}
+html, body {
+  font-family: 'Roboto', sans-serif;
+  font-size:14px;
+  height:100%;
+  margin: 0px;
+  padding: 0px;
 }
 
-.navbar-brand {
-  line-height: 4;
+.sidenav-link {
+  font-size: 18px;
+}
+.md-sidenav-right li {
+  padding-bottom: 6px;
 }

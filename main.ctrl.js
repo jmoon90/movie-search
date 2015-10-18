@@ -1,15 +1,38 @@
-popularListApp.controller('MainController', ['$mdSidenav', '$log', function($mdSidenav, $log) {
+popularListApp.controller('MainController', ['$mdSidenav', '$log', '$timeout', function($mdSidenav, $log, $timeout) {
   var vm = this;
   vm.title = 'Popular Stuff';
 
   vm.toggleRight = buildToggler('right');
-   vm.isOpenRight = function(){
-     return $mdSidenav('right').isOpen();
-   };
+  vm.isOpenRight = function(){
+    return $mdSidenav('right').isOpen();
+  };
+
+  function debounce(func, wait, context) {
+    var timer;
+
+    return function debounced() {
+      var context = vm,
+          args = Array.prototype.slice.call(arguments);
+      $timeout.cancel(timer);
+      timer = $timeout(function() {
+        timer = undefined;
+        func.apply(context, args);
+      }, wait || 10);
+    };
+  }
+
+  function buildDelayedToggler(navID) {
+    return debounce(function() {
+      $mdSidenav(navID)
+        .toggle()
+        .then(function () {
+          $log.debug("toggle " + navID + " is done");
+        });
+    }, 200);
+  }
 
   function buildToggler(navId) {
     return function() {
-      console.log('we are in the right', navId);
       $mdSidenav(navId)
         .toggle()
         .then(function() {
@@ -30,6 +53,8 @@ popularListApp.controller('RightCtrl', function ($timeout, $mdSidenav, $log) {
   };
 });
 
+
+//MOVIE API pages
 popularListApp.controller('moviesController', ['popularInfoService','$routeParams', function(popularInfoService, $routeParams) {
   var vm = this;
   vm.title = 'Movies'
