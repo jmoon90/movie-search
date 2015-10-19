@@ -5,9 +5,8 @@
     <title>AngularJS Tutorial</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="material_design.css">
-    <link rel="stylesheet" href="https://rawgit.com/angular/bower-material/master/angular-material.css"/>
+    <link rel="stylesheet" href="https://material.angularjs.org/latest/angular-material.min.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
 
     <!-- Angular Material Dependencies -->
     <script src="https://code.angularjs.org/1.4.7/angular.min.js"></script>
@@ -26,21 +25,22 @@
 
   <body ng-app='popularListApp'>
     <header ng-controller='MainController as main' ngCloak=''>
-      <!-- <nav class="navbar navbar&#45;default"> -->
        <section layout="row">
-        <div class="container">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="/">Popular List</a>
+        <div class="container main-content-border">
+          <div class="nav navbar-nav navbar-left">
+            <div layout="column" layout-fill="" layout-align="top center">
+              <a class="navbar-logo" href="/">Popular List</a>
+            </div>
           </div>
 
-            <div class="nav navbar-nav navbar-right">
-              <div layout="column" layout-fill="" layout-align="top center">
-                  <md-button ng-click='main.toggleRight()' ng-hide='main.isOpenRight()' class='md-primary'>
-                    <i class="material-icons md-36">menu</i>
-                  </md-button>
-              </div>
+          <div class="nav navbar-nav navbar-right">
+            <div layout="column" layout-fill="" layout-align="top center">
+                <md-button ng-click='main.toggleRight()' ng-hide='main.isOpenRight()' class='md-primary material-menu'>
+                  <i class="material-icons md-36">menu</i>
+                </md-button>
             </div>
-            <div flex=''></div>
+          </div>
+          <div flex=''></div>
 
           <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right" flex=''>
             <md-toolbar class="md-theme-light">
@@ -58,13 +58,53 @@
                 </li>
               </ul>
             </md-content>
+
           </md-sidenav>
 
 
         </div>
       </section>
-      <!-- </nav> -->
     </header>
+
+    <md-content flex layout-padding>
+      <main class="main-content-border" role="main">
+        <h1 class="page-title">Products</h1>
+        <div class="collection-products products-per-row-2">
+          <article class="product-list-item" id="product-list-item-290635593">
+            <figure class="product-list-item-thumbnail">
+              <a href="/products/storyclip">
+                <img src="//cdn.shopify.com/s/files/1/0434/2805/products/white-clip_large_grande.jpg?v=1398787701" alt="White">
+              </a>
+            </figure>
+
+            <div class="product-list-item-details">
+              <p class="product-list-item-vendor vendor meta">StoryClip</p>
+              <p class="product-list-item-price">
+                <span class="price money">$149.00</span>
+                <a href='https://www.amazon.com'><md-button class="md-raised md-primary">Buy Now</md-button></a>
+              </p>
+            </div>
+          </article>
+        </div>
+      </main>
+    </md-content>
+
+    <md-content flex layout-padding>
+      <div class="mailing-list-signup ">
+          <h3 class="section-title">KEEP IN TOUCH WITH PIXEL UNION</h3>
+          <p>Like what you see? Join our newsletter to catch updates and hear about new theme releases.</p>
+        <form action="http://pixelunion.us6.list-manage.com/subscribe/post?u=c36736a9501a95c7eb561d317&amp;id=0dd81e0595" method="post" name="mc-embedded-subscribe-form" target="_blank">
+          <md-input-container class="md-icon-float">
+            <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
+            <label>Email</label>
+
+            <!-- Use floating placeholder instead of label -->
+            <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
+            <input ng-model="user.email" type="email" placeholder="Email (required)" ng-required="true">
+          </md-input-container>
+        </form>
+      </div>
+    </md-content>
 
     <div class="container">
         <div ng-view></div>

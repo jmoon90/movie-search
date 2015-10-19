@@ -9,9 +9,55 @@ html, body {
   padding: 0px;
 }
 
+/* navbar */
 .sidenav-link {
   font-size: 18px;
 }
 .md-sidenav-right li {
   padding-bottom: 6px;
+}
+
+.main-content-border {
+  border-bottom: 1px solid black;
+}
+
+.material-menu {
+  position: relative;
+  height: 120px;
+}
+
+.navbar-header {
+  position: relative;
+  height: 120px;
+}
+
+
+/* NAVBAR */
+.top-logo {
+  float: left!important;
+  margin-right: -15px;
+  height: 100%;
+}
+
+.navbar-logo {
+  position: relative;
+  height: 120px;
+  padding: 0 6px;
+}
+
+/* product content */
+
+.main-content {
+  border-bottom: 1px solid black;
+}
+
+.mailing-list-signup p {
+  text-align: center;
+}
+
+.section-title {
+  color: #e05e60;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
 }
